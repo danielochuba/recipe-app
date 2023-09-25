@@ -2,7 +2,7 @@
 
 <div align="center">
  
-  <img src="./recipe_erd_2_memebers.png" alt="logo" width="200"  height="auto">
+  <img src="./recipe_erd_2_members.png" alt="logo" width="200"  height="auto">
   <br/>
 
 </div>
