@@ -1,6 +1,8 @@
 <a name="readme-top"></a>
 
 <div align="center">
+
+<h1><b>RECIPE APP: SETUP</b></h1>
  
   <img src="./recipe_erd_2_members.png" alt="logo" width="200"  height="auto">
   <br/>
