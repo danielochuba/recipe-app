@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+form {
+  width: 70%;
+  margin: auto;
+}
