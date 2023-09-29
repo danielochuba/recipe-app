@@ -1,0 +1,31 @@
+<div class="container">
+<h2 class="text-center">Recipe List</h2>
+  <% if !@recipes.empty? %>
+    <% @recipes.each do |recipe| %>
+      <div class="card mb-3 m-auto" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4 d-flex flex-column justify-content-center align-items-center">
+            <h3 class="recipe-name">
+              <%= link_to recipe.name, show_user_recipe_path(current_user, id: recipe.id), class: " w-75 m-auto text-decoration-none" %>
+            </h3>
+            <% if can? :destroy, recipe %>
+            <%= link_to "Delete", destroy_user_recipe_path(user_id: current_user, id: recipe.id), method: :delete %>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <p class="card-text"><%= recipe.description%></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-center">No recipes yet</p>
+  <% end %>
+
+  <% if can? :create, Recipe %>
+  <div class="w-25 m-auto">
+    <%= link_to "Add Recipe", new_user_recipe_path(current_user), class: "btn btn-primary w-75 m-auto" %>
+  <% end %>
+</div>
