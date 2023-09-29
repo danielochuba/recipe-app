@@ -1,5 +1,4 @@
 class RecipeController < ApplicationController
-
   def index
     @user = User.find(current_user.id)
     @recipes = @user.recipes
