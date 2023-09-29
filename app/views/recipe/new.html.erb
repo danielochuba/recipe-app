@@ -1,0 +1,27 @@
+<div class="container">
+<h2 class="text-center m-3">Create Recipe</h2>
+
+<%= form_with model: Recipe.new, url: create_user_recipe_path(current_user), method: :post, local: true do |f| %>
+    <div class="field mb-3">
+        <%= f.text_field :name, class: "form-control", placeholder: "Recipe name" %>
+    </div>
+    <div class="field mb-3">
+        <%= f.text_field :preparation_time , class: "form-control", placeholder: "Preparation time"%>
+    </div>
+    <div class="field mb-3">
+        <%= f.text_field :cooking_time, class: "form-control", placeholder: "Cooking time"  %>
+    </div>
+    <div class="field mb-3">
+        <%= f.text_area :description, class: "form-control", placeholder: "Description"  %>
+    </div>
+
+ <%= f.hidden_field :public, value: false %> 
+
+<div class="actions w-25 m-auto d-grid gap-2 ">
+  <%= f.submit "Create Food", class: "btn btn-primary" %>
+</div>
+<% end %>
+
+<%= link_to "Back", user_foods_path %>
+</div>
+<%= flash[:error] %><%= flash[:success] %>
