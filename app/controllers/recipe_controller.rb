@@ -4,6 +4,21 @@ class RecipeController < ApplicationController
     @recipes = @user.recipes
   end
 
+  def show
+    @user = User.find(current_user.id)
+    @recipe = @user.recipes.find(params[:id])
+    @foods = Food.all
+  end
+
+  def toggle_public
+    @recipe = Recipe.find(params[:id])
+
+    # Toggle the 'public' attribute
+    @recipe.update(public: !@recipe.public)
+
+    respond_to(&:js)
+  end
+
   def new
     @recipe = Recipe.new
 

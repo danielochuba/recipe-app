@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/recipes/:id', to: 'recipe#show', as: 'show_user_recipe'
   delete 'users/:user_id/recipes/:id', to: 'recipe#destroy', as: 'destroy_user_recipe'
 
+  patch 'users/:user_id/recipes/:id', to: 'recipe#toggle_public', as: 'toggle_public_recipe'
 
   # Defines the root path route ("/")
   # root "articles#index"
