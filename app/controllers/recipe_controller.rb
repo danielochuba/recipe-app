@@ -17,6 +17,11 @@ class RecipeController < ApplicationController
     @recipe.update(public: !@recipe.public)
 
     respond_to(&:js)
+
+    respond_to do |format|
+      format.html { render :new, locals: { recipe: @recipe, food: @food } }
+      format.js { render partial: "new_recipe_food" }
+    end
   end
 
   def new

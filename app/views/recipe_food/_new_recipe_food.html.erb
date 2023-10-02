@@ -1,0 +1,22 @@
+<div class="modal fade" id="new-recipe-modal" tabindex="-1" role="dialog" aria-labelledby="new-recipe-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_with(model: recipe, local: true) do |form| %>
+        <div class="modal-header">
+          <h5 class="modal-title" id="new-recipe-modal-label">New Recipe</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form.text_field :name, class: "form-control", placeholder: "Recipe name" %>
+          <%= form.text_area :description, class: "form-control", placeholder: "Recipe description" %>
+        </div>
+        <div class="modal-footer">
+          <%= form.submit "Create Recipe", class: "btn btn-primary" %>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
