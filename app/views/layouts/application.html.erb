@@ -16,8 +16,8 @@
   <body>
     <header>
       <div class="nav-bar">
-        <div class="menu">Recipes</div>
-        <div class="menu">Food</div>
+        <div class="menu"><%= link_to "Recipes", user_recipes_path(current_user) %></div>
+        <div class="menu"><%= link_to "Food", user_foods_path(current_user) %></div>
         <div class="menu">Public Recipes</div>
       </div>
     </header>
