@@ -7,6 +7,7 @@
                 <tr>
                 <th scope="col">Food</th>
                 <th scope="col">Measurement Unit</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">Unit Price</th>
                 <th scope="col">Actions</th>
                 </tr>
@@ -16,6 +17,7 @@
                 <tr>
                 <th scope="row"><%= food.name %></th>
                 <td><%= food.measurement_unit %></td>
+                <td><%= food.quantity %></td>
                 <td><%= food.price %></td>
                 <td><%= link_to "Delete", destroy_user_food_path(user_id: current_user, id: food.id), method: :delete %></td>
                 </tr>
