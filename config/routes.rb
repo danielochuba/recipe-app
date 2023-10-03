@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/recipes/:id', to: 'recipe#show', as: 'show_user_recipe'
   delete 'users/:user_id/recipes/:id', to: 'recipe#destroy', as: 'destroy_user_recipe'
 
-  get 'users/:user_id/recipes/:recipe_id/recipe_foods', to: 'recipe_foods#index', as: 'user_recipe_recipe_foods'
+  get 'users/:user_id/recipes/:recipe_id/recipe_food', to: 'recipe_food#index', as: 'user_recipe_recipe_food'
 
   patch 'users/:user_id/recipes/:id', to: 'recipe#toggle_public', as: 'toggle_public_recipe'
 
