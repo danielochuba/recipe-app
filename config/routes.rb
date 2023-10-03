@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   patch 'users/:user_id/recipes/:id', to: 'recipe#toggle_public', as: 'toggle_public_recipe'
 
+  get '/public_recipes', to: 'public_recipes#index', as: 'public_recipes'
+
   # Defines the root path route ("/")
   # root "articles#index"
 end
