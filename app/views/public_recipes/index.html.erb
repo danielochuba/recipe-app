@@ -1,2 +1,16 @@
-<h1>PublicRecipes#index</h1>
-<p>Find me in app/views/public_recipes/index.html.erb</p>
+<% if @public_recipes.present? %>
+  <h1>Public Recipes</h1>
+
+  <ul>
+    <% @public_recipes.each do |recipe| %>
+      <li>
+        <strong><%= recipe.name %></strong><br>
+        Publish by: <%= recipe.user.name %><br>
+        Total food items: <%=  %><br>
+        Total price: <%=  %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>No public recipes available</h1>
+<% end %>
