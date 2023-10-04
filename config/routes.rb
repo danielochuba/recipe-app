@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'public_recipes/index'
   devise_for :users
 
+  root to: 'recipe#index', as: :user_recipes_root
+
  # get '/users'
   get 'users/:user_id/foods', to: 'food#index', as: 'user_foods'
   get 'users/:user_id/foods/new', to: 'food#new', as: 'new_user_food'
