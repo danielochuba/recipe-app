@@ -29,9 +29,7 @@
               <td><%= recipe_food.quantity %><%= Food.find(recipe_food.food_id).measurement_unit %></td>
               <td>$<%= (Food.find(recipe_food.food_id).price * recipe_food.quantity).round(2) %></td>
               <td>
-                <%= link_to "modify", destroy_user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipe_food), method: :update %>
-                <%= link_to "Remove", destroy_user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipe_food), method: :delete %>
-              </td>
+                 </td>
             </tr>
           <% end %>
         <% else %>
@@ -41,8 +39,15 @@
         <% end %>
       </tbody>
     </table>
+    <div class="d-flex flex-row justify-content-between">
     <% if can? :manage, Food %>
-      <%= link_to "Add Ingredient to Recipe", new_user_recipe_recipe_foods_path(current_user, @recipe), class: "btn btn-sm btn-primary" %>
+      <button id="add-ingredient-button" class="btn btn-sm btn-primary">Add New Ingredient</button>
+      <div id="ingredient-form" style="display: none;">
+        <%= render partial: 'ingredient_form' %>
+      </div>
     <% end %>
   </div>
+  </div>
 <% end %>
+
+

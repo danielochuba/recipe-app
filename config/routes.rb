@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   delete 'users/:user_id/recipes/:recipe_id/recipe_foods/:id', to: 'recipe_foods#destroy', as: 'destroy_user_recipe_recipe_foods'  
 
   patch 'users/:user_id/recipes/:id/toggle_public', to: 'recipe#toggle_public', as: 'toggle_public_recipe'
+  # Agrega una ruta de edición para los ingredientes de la receta
+patch 'users/:user_id/recipes/:recipe_id/recipe_foods/:id/edit', to: 'recipe_foods#edit', as: 'edit_user_recipe_recipe_food'
+
 
   get '/public_recipes', to: 'public_recipes#index', as: 'public_recipes'
 
