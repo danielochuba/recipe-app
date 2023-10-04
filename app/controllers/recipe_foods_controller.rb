@@ -39,7 +39,27 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-  # Resto de las acciones del controlador (update, destroy, etc.)
+  def update
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.find(params[:id])
+
+    if @recipe_food.update(recipe_food_params)
+      redirect_to show_user_recipe_path(current_user, @recipe), notice: "Ingredient quantity updated successfully."
+    else
+      redirect_to show_user_recipe_path(current_user, @recipe), alert: "Failed to update ingredient quantity."
+    end
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.find(params[:id])
+
+    if @recipe_food.destroy
+      redirect_to show_user_recipe_path(current_user, @recipe), notice: "Ingredient removed successfully."
+    else
+      redirect_to show_user_recipe_path(current_user, @recipe), alert: "Failed to remove ingredient."
+    end
+  end
 
   private
 
