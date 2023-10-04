@@ -7,7 +7,7 @@
         <strong><%= recipe.name %></strong><br>
         Publish by: <%= recipe.user.name %><br>
         Total food items: <%= RecipeFood.where(recipe_id: recipe.id).count %><br>
-        Total price: <%=  %>
+        Total price: $<%= RecipeFood.where(recipe_id: recipe.id).joins(:food).sum('foods.price * recipe_foods.quantity').to_f %>
       </li>
     <% end %>
   </ul>
