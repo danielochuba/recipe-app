@@ -7,18 +7,8 @@ class RecipeController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @recipe = @user.recipes.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods
     @foods = Food.all
-  end
-
-  def total_items
-    @user = User.find(current_user.id)
-    @recipe = @user.recipes.find(params[:id])
-    @foods = Food.all
-    @total_quantity = @foods.sum(:quantity)
-  end
-
-  def total_price
-    @foods.sum(:price)
   end
 
   def toggle_public

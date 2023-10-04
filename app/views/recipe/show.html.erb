@@ -7,46 +7,42 @@
       <span>cooking time: <%= @recipe.cooking_time %> Hr(s)</span>
       <p>Steps goest here....</p>
     </div>
-    <div class="col-4">
-        <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, remote: true do |f| %>
-        <div class="form-check form-switch">
-          <%= f.check_box :public, id: "toggle_checkbox", class: "form-check-input", onchange: "this.form.submit();" %>
-          <label class="form-check-label" for="toggle_checkbox">Toggle Public</label>
-        </div>
-      <% end %>
-      <%= link_to "Toggle Public", toggle_public_recipe_path(@recipe), method: :patch, remote: true %>
-    </div>
   </div>
   <div class="d-flex flex-row justify-content-between">
-  <%= link_to "Generate Shopping list", show_user_recipe_path(current_user, @recipe), class: "btn btn-sm btn-primary"  %><%= link_to "Add Ingredient", show_user_recipe_path(current_user, @recipe), class: "btn btn-sm btn-primary"   %>
+    <%= link_to "Generate Shopping list", show_user_recipe_path(current_user, @recipe), class: "btn btn-sm btn-primary"  %>
   </div>
   <hr />
-   <% if !@foods.empty? %>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                <th scope="col">Food</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Value</th>
-                <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @foods.each do |food| %>
-                <tr>
-                <td><%= food.name %></th>
-                <td><%= food.quantity %><%= food.measurement_unit %></td>
-                <td>$<%= food.price * food.quantity %></td>
-                <td><%= link_to "modify", destroy_user_food_path(user_id: current_user, id: food.id), method: :update %> <%= link_to "Remove", destroy_user_food_path(user_id: current_user, id: food.id), method: :delete %></td>
-                </tr>
-                <% end %>
-            </tbody>
-        </table>
-    <% else %>
-        <p class="text-center">No food added yet</p>
-    <% end %>
-    <% if can? :manage, Food %>
-        <%= link_to "Add New Food", new_user_food_path(current_user), class: "btn btn-sm btn-primary" %>
-    <% end %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if !@recipe_foods.empty? %>
+        <% @recipe_foods.each do |recipe_food| %>
+          <tr>
+            <td><%= recipe_food.food.name %></td>
+            <td><%= recipe_food.quantity %><%= recipe_food.food.measurement_unit %></td>
+            <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
+            <td>
+              <%= link_to "modify", destroy_user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipe_food), method: :update %>
+              <%= link_to "Remove", destroy_user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipe_food), method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="4" class="text-center">No ingredients added yet</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if can? :manage, Food %>
+    <%= link_to "Add Ingredient to Recipe", new_user_recipe_recipe_foods_path(current_user, @recipe), class: "btn btn-sm btn-primary" %>
+  <% end %>
 </div>
 <% end %>

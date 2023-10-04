@@ -15,9 +15,13 @@ Rails.application.routes.draw do
   get 'users/:user_id/recipes/:id', to: 'recipe#show', as: 'show_user_recipe'
   delete 'users/:user_id/recipes/:id', to: 'recipe#destroy', as: 'destroy_user_recipe'
 
-  get 'users/:user_id/recipes/:recipe_id/recipe_food', to: 'recipe_food#index', as: 'user_recipe_recipe_food'
+  get 'users/:user_id/recipes/:recipe_id/recipe_foods/new', to: 'recipe_foods#new', as: 'new_user_recipe_recipe_foods'
+  get 'users/:user_id/recipes/:recipe_id/recipe_foods', to: 'recipe_foods#index', as: 'user_recipe_recipe_foods'
+  post 'users/:user_id/recipes/:recipe_id/recipe_foods', to: 'recipe_foods#create', as: 'create_user_recipe_recipe_foods'
+  patch 'users/:user_id/recipes/:recipe_id/recipe_foods/:id', to: 'recipe_foods#update', as: 'update_user_recipe_recipe_foods'
+  delete 'users/:user_id/recipes/:recipe_id/recipe_foods/:id', to: 'recipe_foods#destroy', as: 'destroy_user_recipe_recipe_foods'  
 
-  patch 'users/:user_id/recipes/:id', to: 'recipe#toggle_public', as: 'toggle_public_recipe'
+  patch 'users/:user_id/recipes/:id/toggle_public', to: 'recipe#toggle_public', as: 'toggle_public_recipe'
 
   get '/public_recipes', to: 'public_recipes#index', as: 'public_recipes'
 
