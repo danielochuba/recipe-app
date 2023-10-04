@@ -39,17 +39,23 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-  def update
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = @recipe.recipe_foods.find(params[:id])
-
-    if @recipe_food.update(recipe_food_params)
-      redirect_to show_user_recipe_path(current_user, @recipe), notice: "Ingredient quantity updated successfully."
-    else
-      redirect_to show_user_recipe_path(current_user, @recipe), alert: "Failed to update ingredient quantity."
-    end
+  def edit
+    @user = current_user
+  @recipe = Recipe.find(params[:recipe_id])
+  @recipe_food = RecipeFood.find(params[:id])
   end
 
+  def update
+    @recipe_food = RecipeFood.find(params[:id])
+  
+    if @recipe_food.update(quantity: params[:recipe_food][:quantity])
+      redirect_to show_user_recipe_path(current_user, @recipe), notice: "Cantidad actualizada exitosamente."
+    else
+      render 'recipe/edit'
+    end
+  end
+  
+  
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.find(params[:id])
