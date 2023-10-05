@@ -1,0 +1,16 @@
+<% if @public_recipes.present? %>
+  <h1>Public Recipes</h1>
+
+  <ul>
+    <% @public_recipes.each do |recipe| %>
+      <li>
+        <strong><%= recipe.name %></strong><br>
+        Publish by: <%= recipe.user.name %><br>
+        Total food items: <%= RecipeFood.where(recipe_id: recipe.id).count %><br>
+        Total price: $<%= RecipeFood.where(recipe_id: recipe.id).joins(:food).sum('foods.price * recipe_foods.quantity').to_f %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h1>No public recipes available</h1>
+<% end %>

@@ -29,6 +29,18 @@
           <li class="nav-item">
             <%= link_to "Profile", edit_user_registration_path, class: "nav-link" %>
           </li>
+          <li class="nav-item">
+          <%= link_to "Recipes", user_recipes_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Food", user_foods_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Public Recipes", public_recipes_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Shopping List", user_foods_path(current_user), class: "nav-link" %>
+        </li>
         <% else %>
           <li class="nav-item">
             <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
@@ -37,18 +49,7 @@
             <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
-        <li class="nav-item">
-          <%= link_to "Recipes", user_recipes_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Food", user_foods_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-        <%= link_to "Public Recipes", user_foods_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-        <%= link_to "Shopping List", user_foods_path(current_user), class: "nav-link" %>
-        </li>
+       
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
