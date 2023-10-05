@@ -26,10 +26,10 @@ development:
   database: recipe_app
   adapter: postgresql
   encoding: unicode
-  #username: postgres
-  #password: Welcome126@
-  username: simplebet
-  password: Juan8580
+  username: postgres
+  password: Welcome126@
+  # username: simplebet
+  # password: Juan8580
   host: localhost
   port: 5432
 
