@@ -11,7 +11,7 @@
     </div>
     <div class="d-flex flex-row justify-content-between">
       <%= link_to "Generate Shopping list", general_shopping_list_path(current_user), class: "btn btn-sm btn-primary" %>
-       <button id="add-ingredient-button" class="btn btn-sm btn-primary">Add New Ingredient</button>
+      <%= link_to "Add New Ingredient", new_user_recipe_recipe_food_path(current_user, @recipe), class: "btn btn-sm btn-primary" %>
     </div>
     <hr />
     <table class="table table-bordered">
@@ -43,13 +43,5 @@
         <% end %>
       </tbody>
     </table>
-    <div class="d-flex flex-row justify-content-between">
-    <% if can? :manage, Food %>
-     
-      <div id="ingredient-form" style="display: none;">
-        <%= render partial: 'ingredient_form' %>
-      </div>
-    <% end %>
-  </div>
   </div>
 <% end %>

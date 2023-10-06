@@ -19,8 +19,7 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
 
       click_button 'Sign up'
       user.confirm
-      sleep 5
-
+      sleep 3
 
       fill_in 'Email', with: "good@gmail.com"
       fill_in 'Password', with: user.password
@@ -29,28 +28,8 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
       click_button 'Log in'
     end
 
-
     it 'renders the index view' do
       expect(page).to have_content('You have to confirm your email address before continuing.')
     end
-
   end
 end
-
-
-# require 'rails_helper'
-
-# RSpec.feature 'User Registration', type: :feature do
-#   scenario 'User signs up without email confirmation' do
-#     visit new_user_registration_path
-
-#     fill_in 'Name', with: 'John Doe'
-#     fill_in 'Email', with: 'johndoe@example.com'
-#     fill_in 'Password', with: 'password'
-#     fill_in 'Password confirmation', with: 'password'
-
-#     click_button 'Sign up'
-
-#     expect(page).to have_content('uccessfully.', wait: 7)
-#   end
-# end
