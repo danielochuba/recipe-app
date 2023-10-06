@@ -29,6 +29,5 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
     it 'renders the index view' do
       expect(page).to have_content('Shopping List')
     end
-  
   end
 end
