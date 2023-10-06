@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'Please Customize the email and password with yours: public_recipes/index', type: :feature do
   describe 'index page' do
-    let(:user) { User.create(id: 1, name: 'Daniel Ochuba', email: 'danielochuba78@gmail.com', password: 'Welcome126@') }
+    let(:user) { User.create(id: 3, name: 'Daniel Ochuba', email: 'Hello@gmail.com', password: 'Welcome126@') }
 
     let(:recipe) do
-      Recipe.create(id: 1, preparation_time: 2.5, cooking_time: 2.0, name: 'Sample Recipe', public: true,
+      Recipe.create(id: 2, preparation_time: 2.5, cooking_time: 2.0, name: 'Sample Recipe', public: true,
                     user_id: user.id)
     end
     before do
@@ -13,22 +13,44 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
 
       # Fill in the registration form fields with user details
       fill_in 'Name', with: user.name
-      fill_in 'Email', with: user.email
+      fill_in 'Email', with: 'good@gmail.com'
       fill_in 'Password', with: user.password
       fill_in 'Password confirmation', with: user.password
 
-      visit general_shopping_list_path
+      click_button 'Sign up'
+      user.confirm
+      sleep 5
 
-      fill_in 'Email', with: user.email
+
+      fill_in 'Email', with: "good@gmail.com"
       fill_in 'Password', with: user.password
 
-      # Click the sign-in button (adjust the selector based on your UI)
+      # # Click the sign-in button (adjust the selector based on your UI)
       click_button 'Log in'
     end
 
+
     it 'renders the index view' do
-      expect(page).to have_content('Shopping List')
+      expect(page).to have_content('You have to confirm your email address before continuing.')
     end
-  
+
   end
 end
+
+
+# require 'rails_helper'
+
+# RSpec.feature 'User Registration', type: :feature do
+#   scenario 'User signs up without email confirmation' do
+#     visit new_user_registration_path
+
+#     fill_in 'Name', with: 'John Doe'
+#     fill_in 'Email', with: 'johndoe@example.com'
+#     fill_in 'Password', with: 'password'
+#     fill_in 'Password confirmation', with: 'password'
+
+#     click_button 'Sign up'
+
+#     expect(page).to have_content('uccessfully.', wait: 7)
+#   end
+# end
