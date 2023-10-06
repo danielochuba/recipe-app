@@ -9,6 +9,14 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
                     user_id: user.id)
     end
     before do
+      visit new_user_registration_path
+
+      # Fill in the registration form fields with user details
+      fill_in 'Name', with: user.name
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      fill_in 'Password confirmation', with: user.password
+
       visit general_shopping_list_path
 
       fill_in 'Email', with: user.email
@@ -21,5 +29,6 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
     it 'renders the index view' do
       expect(page).to have_content('Shopping List')
     end
+  
   end
 end
