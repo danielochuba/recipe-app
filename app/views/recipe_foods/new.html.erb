@@ -1,20 +1,13 @@
-<%= form_with(model: [current_user, @recipe, Food.new], url: create_user_recipe_recipe_foods_path(current_user, @recipe), method: :post, local: true) do |f| %>
-  <div class="field mb-3">
-      <%= f.text_field :name, class: "form-control", placeholder: "Food name" %>
+<% if can? :manage, Food %>
+  <%= form_with(model: @recipe_food, url: user_recipe_recipe_foods_path(current_user, @recipe)) do |f| %>
+    <div class="form-group">
+      <%= f.label :food_id, 'Select Ingredient' %>
+      <%= f.select :food_id, options_for_select(@foods.map { |food| [food.name, food.id] }), {}, name: 'recipe_food[food_id]', class: 'form-control' %>
     </div>
-    <div class="field mb-3">
-      <%= f.text_field :measurement_unit, class: "form-control", placeholder: "Measurement unit" %>
+    <div class="form-group">
+      <%= f.label :quantity, 'Quantity' %>
+      <%= f.number_field :quantity, class: 'form-control', name: 'recipe_food[quantity]' %>
     </div>
-    <div class="field mb-3">
-      <%= f.number_field :price, class: "form-control", placeholder: "Price" %>
-    </div>
-    <div class="field mb-3">
-      <%= f.number_field :quantity, class: "form-control", placeholder: "Quantity" %>
-    </div>
-    <div class="actions w-25 m-auto d-grid gap-2">
-      <%= f.submit "Create Food", class: "btn btn-primary" %>
-    </div>
+    <%= f.submit 'Add Ingredient', class: 'btn btn-sm btn-primary' %>
   <% end %>
-  
-  <%= link_to "Back", show_user_recipe_path(current_user, @recipe) %>
-  
+<% end %>
