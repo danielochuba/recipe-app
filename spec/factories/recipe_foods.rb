@@ -1,9 +1,8 @@
 FactoryBot.define do
     factory :recipe_food do
-      # Add attributes for recipe_food here
-      # For example:
-      association :recipe
-      association :food
-      quantity { 1 }
+      quantity { 1 } # Establece la cantidad predeterminada
+      recipe # Asocia automáticamente una receta válida
+      food # Asocia automáticamente un alimento válido
     end
   end
+  
