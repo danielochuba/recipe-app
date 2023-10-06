@@ -42,12 +42,16 @@ class RecipeFoodsController < ApplicationController
     @user = current_user
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.find(params[:id])
+    # Carga la receta asociada al alimento
+    @recipe = @recipe_food.recipe
   end
 
   def update
     @recipe_food = RecipeFood.find(params[:id])
 
     if @recipe_food.update(quantity: params[:recipe_food][:quantity])
+      # Carga la receta asociada al alimento actual
+      @recipe = @recipe_food.recipe
       redirect_to show_user_recipe_path(current_user, @recipe), notice: 'Cantidad actualizada exitosamente.'
     else
       render 'recipe/edit'
