@@ -7,18 +7,11 @@
         <span>cooking time: <%= @recipe.cooking_time %> Hr(s)</span>
         <p>Steps goest here....</p>
       </div>
-      <div class="col-4">
-      <%= form_for @recipe, url: toggle_public_recipe_path(@recipe), method: :patch, remote: true do |f| %>
-      <div class="form-check form-switch">
-        <%= f.check_box :public, id: "toggle_checkbox", class: "form-check-input", onchange: "this.form.submit();" %>
-        <label class="form-check-label" for="toggle_checkbox">Toggle Public</label>
-      </div>
-    <% end %>
-    <%= link_to "Toggle Public", toggle_public_recipe_path(@recipe), method: :patch, remote: true %>
-  </div>
+   <%= link_to "Toggle Public", toggle_public_recipe_path(@recipe), method: :patch, remote: true %>
     </div>
     <div class="d-flex flex-row justify-content-between">
-      <%= link_to "Generate Shopping list", show_user_recipe_path(current_user, @recipe), class: "btn btn-sm btn-primary" %>
+      <%= link_to "Generate Shopping list", general_shopping_list_path(current_user), class: "btn btn-sm btn-primary" %>
+       <button id="add-ingredient-button" class="btn btn-sm btn-primary">Add New Ingredient</button>
     </div>
     <hr />
     <table class="table table-bordered">
@@ -52,7 +45,7 @@
     </table>
     <div class="d-flex flex-row justify-content-between">
     <% if can? :manage, Food %>
-      <button id="add-ingredient-button" class="btn btn-sm btn-primary">Add New Ingredient</button>
+     
       <div id="ingredient-form" style="display: none;">
         <%= render partial: 'ingredient_form' %>
       </div>
