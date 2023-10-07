@@ -1,0 +1,30 @@
+<div class="container">
+    <%= link_to 'Add food', new_user_food_path(user_id: current_user), class: 'btn btn-primary' %>
+    <h1 class="text-center">Food List</h1>
+    <% if !@foods.empty? %>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Food</th>
+                <th scope="col">Measurement Unit</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @foods.each do |food| %>
+                <tr>
+                <th scope="row"><%= food.name %></th>
+                <td><%= food.measurement_unit %></td>
+                <td><%= food.quantity %></td>
+                <td><%= food.price %></td>
+                <td><%= link_to "Delete", destroy_user_food_path(user_id: current_user, id: food.id), method: :delete %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    <% else %>
+        <p class="text-center">No food added yet</p>
+    <% end %>
+</div>

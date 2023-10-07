@@ -1,0 +1,9 @@
+<%= form_with(model: @recipe_food, url: update_user_recipe_recipe_food_path(current_user, @recipe, @recipe_food), method: :patch) do |f| %>
+  <div class="form-group">
+    <%= f.label :quantity, 'New Quantity' %>
+    <%= f.number_field :quantity, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Update Quantity', class: 'btn btn-sm btn-primary' %>
+<% end %>
+<turbo-frame id="recipe-food-form">
+</turbo-frame>

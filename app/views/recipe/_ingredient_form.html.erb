@@ -1,0 +1,13 @@
+<% if can? :manage, Food %>
+  <%= form_with(model: @recipe_food, url: user_recipe_recipe_foods_path(current_user, @recipe)) do |f| %>
+    <div class="form-group">
+      <%= f.label :food_id, 'Select Ingredient' %>
+      <%= f.select :food_id, options_for_select(@foods.map { |food| [food.name, food.id] }), {}, name: 'recipe_food[food_id]', class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :quantity, 'Quantity' %>
+      <%= f.number_field :quantity, class: 'form-control', name: 'recipe_food[quantity]' %>
+    </div>
+    <%= f.submit 'Add Ingredient', class: 'btn btn-sm btn-primary' %>
+  <% end %>
+<% end %>

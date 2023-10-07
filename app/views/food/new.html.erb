@@ -1,0 +1,25 @@
+<%= form_with model: Food.new, url: create_user_food_path(current_user), method: :post, local: true do |f| %>
+    <div class="field mb-3">
+        <%= f.text_field :name, class: "form-control", placeholder: "Food name" %>
+    </div>
+    <div class="field mb-3">
+        <%= f.text_field :measurement_unit, class: "form-control", placeholder: "Measurement unit"%>
+    </div>
+    <div class="field mb-3">
+        <%= f.number_field :price, class: "form-control", placeholder: "Price"  %>
+    </div>
+    <div class="field mb-3">
+        <%= f.number_field :quantity, class: "form-control", placeholder: "Quantity"  %>
+    </div>
+  <%
+=begin%>
+ <%= f.hidden_field :author_id, value: current_user.id %> 
+<%
+=end%>
+<div class="actions w-25 m-auto d-grid gap-2 ">
+  <%= f.submit "Create Food", class: "btn btn-primary" %>
+</div>
+<% end %>
+
+<%= link_to "Back", user_foods_path %>
+<%= flash[:error] %><%= flash[:success] %>

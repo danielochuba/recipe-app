@@ -1,0 +1,34 @@
+ <div class="container">
+<h2 class="text-center">Shopping List </h2>
+<br>
+
+<h5 class="text-start position-absolute">Number of food items to buy: <%= @shopping_list.count%></h5> 
+<h5 class="text-end">Total value of food needed: $<%= @shopping_list.sum {|food| food[:cost]}%></h5>
+ 
+ <br>
+ <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% if @shopping_list && !@shopping_list.empty? %>
+          <% @shopping_list.each do |food| %>
+            <tr>
+              <td><%= food[:name] %></td>
+              <td><%=  food[:to_purchase] %> <%= food[:measurement_unit] %></td>
+              <td>$<%= food[:cost] %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="4" class="text-center">No ingredients added yet</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
