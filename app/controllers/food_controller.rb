@@ -22,7 +22,7 @@ class FoodController < ApplicationController
         @recipe = current_user.recipes.find(params[:recipe_id])
         @recipe_food = @recipe.recipe_foods.create(food: @food, quantity: params[:food][:quantity])
 
-        format.html { redirect_to show_user_recipe(@recipe), notice: 'Food was successfully created.' }
+        format.html { redirect_to user_foods_path(@user), notice: 'Food was successfully created.' }
       else
         format.html { render :new }
       end

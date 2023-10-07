@@ -11,7 +11,7 @@
     </div>
     <div class="d-flex flex-row justify-content-between">
       <%= link_to "Generate Shopping list", general_shopping_list_path(current_user), class: "btn btn-sm btn-primary" %>
-       <button id="add-ingredient-button" class="btn btn-sm btn-primary">Add New Ingredient</button>
+      <%= link_to "Add New Ingredient", new_user_recipe_recipe_food_path(current_user, @recipe), class: "btn btn-sm btn-primary" %>
     </div>
     <hr />
     <table class="table table-bordered">
@@ -31,8 +31,8 @@
               <td><%= recipe_food.quantity %><%= Food.find(recipe_food.food_id).measurement_unit %></td>
               <td>$<%= (Food.find(recipe_food.food_id).price * recipe_food.quantity).round(2) %></td>
               <td>
-              <%= link_to "Modify", edit_user_recipe_recipe_food_path(user_id: current_user, recipe_id: @recipe, id: recipe_food), method: :patch, class: "btn btn-sm btn-primary" %>
-                <%= link_to "Remove", destroy_user_recipe_recipe_foods_path(current_user, @recipe, recipe_food), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+              <%= link_to "Modify", edit_user_recipe_recipe_food_path(current_user, @recipe, recipe_food), class: "btn btn-sm btn-primary" %>
+                <%= link_to "Remove", destroy_user_recipe_recipe_food_path(current_user, @recipe, recipe_food), method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
               </td>
             </tr>
           <% end %>
@@ -43,15 +43,5 @@
         <% end %>
       </tbody>
     </table>
-    <div class="d-flex flex-row justify-content-between">
-    <% if can? :manage, Food %>
-     
-      <div id="ingredient-form" style="display: none;">
-        <%= render partial: 'ingredient_form' %>
-      </div>
-    <% end %>
-  </div>
   </div>
 <% end %>
-
-
