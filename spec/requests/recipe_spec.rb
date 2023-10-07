@@ -4,7 +4,7 @@ RSpec.describe RecipeController, type: :controller do
   include Devise::Test::ControllerHelpers
 
   let(:user) { FactoryBot.create(:user) }
-  let(:recipe) { FactoryBot.create(:recipe, user: user) }
+  let(:recipe) { FactoryBot.create(:recipe, user:) }
 
   describe 'GET #show' do
     context 'when a user is not authenticated' do

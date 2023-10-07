@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe RecipeFood, type: :model do
   let(:user) { User.create(name: 'John Doe') }
-  let(:recipe) { Recipe.create(user_id: user.id, preparation_time: 1, cooking_time: 1, description: 'blabla', public: true) }
+  let(:recipe) do
+    Recipe.create(user_id: user.id, preparation_time: 1, cooking_time: 1, description: 'blabla', public: true)
+  end
   let(:food) { Food.create(user_id: user.id, measurement_unit: 'gram', price: 1.2, quantity: 1) }
   let!(:recipe_food) { RecipeFood.new(food_id: food.id, recipe_id: recipe.id, quantity: 1) }
 

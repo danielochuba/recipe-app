@@ -9,7 +9,7 @@ RSpec.describe 'public_recipes/index', type: :view do
   end
 
   it 'displays the list of public recipes' do
-    expect(rendered).to have_content('Public Recipes') # Asegura que se muestra el título adecuado.
+    expect(rendered).to have_content('Public Recipes')
 
     public_recipes.each do |recipe|
       expect(rendered).to have_text(recipe.name)
@@ -20,10 +20,10 @@ RSpec.describe 'public_recipes/index', type: :view do
   end
 
   it 'displays a message when there are no public recipes' do
-    assign(:public_recipes, []) # Simula que no hay recetas públicas asignadas.
+    assign(:public_recipes, [])
 
     render
 
-    expect(rendered).to have_content('No public recipes available') # Asegura que se muestra el mensaje adecuado.
+    expect(rendered).to have_content('No public recipes available')
   end
 end

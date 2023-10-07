@@ -21,7 +21,7 @@ RSpec.describe 'Please Customize the email and password with yours: public_recip
       user.confirm
       sleep 3
 
-      fill_in 'Email', with: "good@gmail.com"
+      fill_in 'Email', with: 'good@gmail.com'
       fill_in 'Password', with: user.password
 
       # # Click the sign-in button (adjust the selector based on your UI)
