@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<h1><b>RECIPE APP: SETUP</b></h1>
+<h1><b>RECIPE APP</b></h1>
  
   <img src="./recipe_erd_2_members.png" alt="logo" width="200"  height="auto">
   <br/>
@@ -77,7 +77,25 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **[Setup KANBAN BOARD]**
+- [ ] **[Setup KANBAN BOARD]**
+- [ ] **[Login page and registration page]**
+- [ ] **[Food list]**
+- [ ] **[Display a list of food added by the logged-in user as in the wireframe (display also quantity of a given food)]**
+- [ ] **[Recipes list]**
+- [ ] **[Display a list of recipes created by the logged-in user as in the wireframe]**
+- [ ] **[Recipe details]**
+- [ ] **[Public recipe list]**
+- [ ] **[Display a list of all public recipes ordered by newest as in the wireframe]**
+- [ ] **[Display a toggle button that allows for a recipe to be made public or private]**
+- [ ] **[Display the recipe details as in the wireframe]**
+- [ ] **[Allows the user to add new food]**
+- [ ] **[General shopping list view (only for a group that has less than 3 members)]**
+- [ ] **[Show the list of food that is missing for all recipes of the logged-in user (compare the list of food for all recipes with      
+         the general food list of that user)]**
+- [ ] **[Count the total food items and total price of the missing food]**
+- [ ] **[No N+1 queries happening]**
+- [ ] **[Navigation menu that allows users to open all of the pages you created]**
+- [ ] **[Unit and integration tests]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -154,24 +172,7 @@ You can deploy this project using:<br>[Coming Soon!!!](https://github.com/daniel
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Login page and registration page]**
-- [ ] **[Food list]**
-- [ ] **[Display a list of food added by the logged-in user as in the wireframe (display also quantity of a given food)]**
-- [ ] **[Recipes list]**
-- [ ] **[Display a list of recipes created by the logged-in user as in the wireframe]**
-- [ ] **[Recipe details]**
-- [ ] **[Public recipe list]**
-- [ ] **[Display a list of all public recipes ordered by newest as in the wireframe]**
-- [ ] **[Display a toggle button that allows for a recipe to be made public or private]**
-- [ ] **[Display the recipe details as in the wireframe]**
-- [ ] **[Allows the user to add new food]**
-- [ ] **[General shopping list view (only for a group that has less than 3 members)]**
-- [ ] **[Show the list of food that is missing for all recipes of the logged-in user (compare the list of food for all recipes with      
-         the general food list of that user)]**
-- [ ] **[Count the total food items and total price of the missing food]**
-- [ ] **[No N+1 queries happening]**
-- [ ] **[Navigation menu that allows users to open all of the pages you created]**
-- [ ] **[Unit and integration tests]**
+- [ ] **[Improve Styling]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
