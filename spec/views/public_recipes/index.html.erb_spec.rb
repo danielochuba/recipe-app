@@ -1,37 +1,29 @@
 require 'rails_helper'
 
-RSpec.describe 'Please Customize the email and password with yours: public_recipes/index', type: :feature do
-  describe 'index page' do
-    let(:user) { User.create(id: 1, name: 'Daniel Ochuba', email: 'danielochuba78@gmail.com', password: 'Welcome126@') }
+RSpec.describe 'public_recipes/index', type: :view do
+  let(:public_recipes) { FactoryBot.create_list(:recipe, 3, public: true, user: FactoryBot.create(:user)) }
 
-    let(:recipe) do
-      Recipe.create(id: 1, preparation_time: 2.5, cooking_time: 2.0, name: 'Sample Recipe', public: true,
-                    user_id: user.id)
+  before do
+    assign(:public_recipes, public_recipes)
+    render
+  end
+
+  it 'displays the list of public recipes' do
+    expect(rendered).to have_content('Public Recipes') # Asegura que se muestra el título adecuado.
+
+    public_recipes.each do |recipe|
+      expect(rendered).to have_text(recipe.name)
+      expect(rendered).to have_text("Publish by: #{recipe.user.name}")
+      expect(rendered).to have_text("Total food items: #{RecipeFood.where(recipe_id: recipe.id).count}")
+      expect(rendered).to have_text("Total price: $#{RecipeFood.where(recipe_id: recipe.id).joins(:food).sum('foods.price * recipe_foods.quantity').to_f}")
     end
-    before do
-      visit public_recipes_path
+  end
 
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
+  it 'displays a message when there are no public recipes' do
+    assign(:public_recipes, []) # Simula que no hay recetas públicas asignadas.
 
-      # Click the sign-in button (adjust the selector based on your UI)
-      click_button 'Log in'
-    end
+    render
 
-    it 'renders the index view' do
-      expect(page).to have_content('Public Recipes')
-    end
-
-    it 'renders the index view' do
-      expect(page).to have_content('Publish by')
-    end
-
-    it 'renders the index view' do
-      expect(page).to have_content('Total food items')
-    end
-
-    it 'renders the index view' do
-      expect(page).to have_content('Total price')
-    end
+    expect(rendered).to have_content('No public recipes available') # Asegura que se muestra el mensaje adecuado.
   end
 end

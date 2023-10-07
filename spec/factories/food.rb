@@ -4,6 +4,6 @@ FactoryBot.define do
       measurement_unit { "gram" }
       price { 1.0 }
       quantity { 1 }
-      user
+      user { FactoryBot.create(:user, email: "correo@ejemplo.com") }
     end
   end
